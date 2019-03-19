@@ -1,4 +1,8 @@
-target/
+classes/
+generated-sources/
+maven-archiver/
+maven-status/
+spooned/
 .mvn/wrapper/maven-wrapper.jar
 .m
 ### STS ###
@@ -14,6 +18,7 @@ target/
 *.iws
 *.iml
 *.ipr
+
 
 ### NetBeans ###
 nbproject/private/
