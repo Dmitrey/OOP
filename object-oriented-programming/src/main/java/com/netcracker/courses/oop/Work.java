@@ -1,10 +1,12 @@
 package com.netcracker.courses.oop;
 
 import com.netcracker.courses.oop.Coffee.Coffee;
-import com.netcracker.courses.oop.Show.Show;
+import com.netcracker.courses.oop.Show.Message;
 import com.netcracker.courses.oop.Van.Van;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 /**
@@ -13,7 +15,7 @@ import java.util.Scanner;
 public class Work {
     //private static int i=0;
     private int temp = 0;
-    Show show = new Show();
+    Message message = new Message();
     Van van = new Van();
 
     static public ArrayList<Coffee> getList() {
@@ -24,7 +26,7 @@ public class Work {
 
     public void programWorks(){
         while(temp!=4){
-            show.showMenu();
+            message.showMenu();
             Scanner scanner = new Scanner(System.in);
             temp = scanner.nextInt();
             switch (temp){
@@ -36,28 +38,41 @@ public class Work {
                     Coffee coffee = new Coffee();
                     list.add(coffee);   //добавление объектов в коллекцию
                     System.out.println("choose the coffee");
-                    show.showCoffeeKind();
+                    message.showCoffeeKind();
                     temp = scanner.nextInt();
                     coffee.setKind(temp);
-                    show.showCoffeeState();
+                    message.showCoffeeState();
                     temp = scanner.nextInt();
                     coffee.setState(temp);
                     System.out.println("enter the weight");
                     coffee.setWeight(scanner.nextInt());
                     van.setFreeSpace(van.getFreeSpace()-coffee.getWeight());
-                    if(van.getFreeSpace()>=0)
-                        break;
-                    else System.out.println("not enough free space");
+                    System.out.println("enter the price");
+                    coffee.setPrice(scanner.nextDouble());
                     break;
                 case 3:
-                    System.out.println("we'll be back right soon again...");
+                    message.showSortParameters();
+                    if(scanner.nextInt() == 1){
+                        weightSort(list);
+                        message.showVanContains();
+                    }
                     break;
                 case 5:
                     System.out.println(van.getFreeSpace());
+                    break;
                 case 6:
-                    show.showVanContains();
+                    message.showVanContains();
             }
         }
     }
-
+    public static void weightSort(ArrayList<Coffee> list){
+        Collections.sort(list, new Comparator<Coffee>() {
+            @Override
+            public int compare(Coffee o1, Coffee o2) {
+                Integer x1 = o1.getWeight();
+                Integer x2 = o2.getWeight();
+                return x1.compareTo(x2);
+            }
+        });
+    }
 }

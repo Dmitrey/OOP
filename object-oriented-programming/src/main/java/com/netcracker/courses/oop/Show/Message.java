@@ -6,10 +6,10 @@ import com.netcracker.courses.oop.Work;
 /**
  * Created by HP on 19.03.2019.
  */
-public class Show {
+public class Message {
     // Work work1 = new Work();
     public void showMenu(){
-        System.out.println("1. Set van capacity"+"\n"+"2. Load the van"+"\n"+"3. Sort different kinds of coffee"+
+        System.out.println("1. Set van capacity"+"\n"+"2. Load the van"+"\n"+"3. Sort by parameter"+
                 "\n"+"4. exit"+"\n"+"5. free space"+"\n"+"6. what is in the van?");
     }
     public void showCoffeeKind(){
@@ -20,7 +20,10 @@ public class Show {
     }
     public void showVanContains(){
         for (Coffee o: Work.getList()) {
-            System.out.println(o.getKind()+" "+o.getState()+" "+o.getWeight());
+            System.out.println(o.getKind()+" "+o.getState()+" "+o.getWeight()+" "+o.getPrice());
         }
+    }
+    public void showSortParameters(){
+        System.out.println("sort by:"+"\n"+"1. weight"+"\n"+"2. price");
     }
 }
