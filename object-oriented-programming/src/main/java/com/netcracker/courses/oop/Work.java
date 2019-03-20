@@ -56,6 +56,10 @@ public class Work {
                         weightSort(list);
                         message.showVanContains();
                     }
+                    else {
+                        priceSort(list);
+                        message.showVanContains();
+                    }
                     break;
                 case 5:
                     System.out.println(van.getFreeSpace());
@@ -71,6 +75,16 @@ public class Work {
             public int compare(Coffee o1, Coffee o2) {
                 Integer x1 = o1.getWeight();
                 Integer x2 = o2.getWeight();
+                return x1.compareTo(x2);
+            }
+        });
+    }
+    public static void priceSort(ArrayList<Coffee> list){
+        Collections.sort(list, new Comparator<Coffee>() {
+            @Override
+            public int compare(Coffee o1, Coffee o2) {
+                Double x1 = o1.getPrice();
+                Double x2 = o2.getPrice();
                 return x1.compareTo(x2);
             }
         });
