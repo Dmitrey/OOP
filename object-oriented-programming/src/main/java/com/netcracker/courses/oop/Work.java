@@ -77,7 +77,7 @@ public class Work {
                             weightFind(list);
                             break;
                         case 2:
-                            System.out.println("stand by");
+                            priceFind(list);
                             break;
                     }
             }
@@ -114,5 +114,17 @@ public class Work {
                 weight.add(obj);
         }
         message.showListContains(weight);
+    }
+    public void priceFind(ArrayList<Coffee> list){
+        System.out.println("enter the min price:");
+        double a = scanner.nextDouble();
+        System.out.println("enter the max price:");
+        double b = scanner.nextDouble();
+        ArrayList<Coffee> price = new ArrayList<>();
+        for (Coffee obj: list){
+            if (obj.getPrice()>a&&obj.getPrice()<b)
+                price.add(obj);
+        }
+        message.showListContains(price);
     }
 }
