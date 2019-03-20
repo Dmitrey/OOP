@@ -24,10 +24,12 @@ public class Work {
 
     static ArrayList<Coffee> list = new ArrayList<Coffee>(); // коллекция с объектами класса Coffee
 
+    static Scanner scanner = new Scanner(System.in);
+
     public void programWorks(){
         while(temp!=4){
             message.showMenu();
-            Scanner scanner = new Scanner(System.in);
+
             temp = scanner.nextInt();
             switch (temp){
                 case 1:
@@ -66,6 +68,18 @@ public class Work {
                     break;
                 case 6:
                     message.showVanContains();
+                    break;
+                case 7:
+                    System.out.println("1. find by weight"+"\n"+"2. find by price");
+                    temp = scanner.nextInt();
+                    switch (temp){
+                        case 1:
+                            weightFind(list);
+                            break;
+                        case 2:
+                            System.out.println("stand by");
+                            break;
+                    }
             }
         }
     }
@@ -88,5 +102,17 @@ public class Work {
                 return x1.compareTo(x2);
             }
         });
+    }
+    public void weightFind(ArrayList<Coffee> list){
+        System.out.println("enter the min weight:");
+        int a = scanner.nextInt();
+        System.out.println("enter the max weight:");
+        int b = scanner.nextInt();
+        ArrayList<Coffee> weight = new ArrayList<>();
+        for (Coffee obj: list){
+            if (obj.getWeight()>a&&obj.getWeight()<b)
+                weight.add(obj);
+        }
+        message.showListContains(weight);
     }
 }
